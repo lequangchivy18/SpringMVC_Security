@@ -21,8 +21,8 @@ public class SpringWebConfig implements WebMvcConfigurer {
 		return viewResolver;
 	}
 	
-	@Bean
-	PasswordEncoder getPasswordEncoder() {
-		return new BCryptPasswordEncoder();
-	}
+//	@Bean
+//	PasswordEncoder getPasswordEncoder() {
+//		return new BCryptPasswordEncoder();
+//	}
 }

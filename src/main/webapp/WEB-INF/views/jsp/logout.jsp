@@ -10,7 +10,7 @@
 </head>
 <body>
 <h1>This is logout page</h1>
-	<form:form action="logout" method="post">
+	<form:form>
 		<input type="submit" value = "logout">
 	</form:form>
 </body>

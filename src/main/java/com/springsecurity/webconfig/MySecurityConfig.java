@@ -29,7 +29,7 @@ public class MySecurityConfig extends WebSecurityConfigurerAdapter {
 			.anyRequest().authenticated()
 			.and()
 		.formLogin()
-			.loginPage("/login").loginProcessingUrl("/login-process")
+			.loginPage("/login").loginProcessingUrl("/process-login")
 			.defaultSuccessUrl("/hello", true)
 			.permitAll()
 			.and()

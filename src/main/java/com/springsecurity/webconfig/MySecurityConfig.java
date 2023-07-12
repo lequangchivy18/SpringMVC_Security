@@ -23,12 +23,17 @@ public class MySecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		http
 		.authorizeRequests()
-		.antMatchers("/").permitAll()
-		.anyRequest().authenticated()
-		.and()
-			.formLogin()
+			.antMatchers("/").permitAll()
+			.anyRequest().authenticated()
 			.and()
-			.httpBasic();
+		.formLogin()
+			.loginPage("/myCustomLogin").loginProcessingUrl("/login-process")
+			.permitAll()
+			.and()
+		.logout()
+	        .permitAll()
+	        .and()
+		.httpBasic();
 	}
 	
 }

@@ -4,6 +4,7 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.web.authentication.logout.CookieClearingLogoutHandler;
 
 @EnableWebSecurity(debug = true)
 public class MySecurityConfig extends WebSecurityConfigurerAdapter {
@@ -21,16 +22,20 @@ public class MySecurityConfig extends WebSecurityConfigurerAdapter {
 	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
+		CookieClearingLogoutHandler cookies = new CookieClearingLogoutHandler("JSESSIONID");
 		http
 		.authorizeRequests()
 			.antMatchers("/").permitAll()
 			.anyRequest().authenticated()
 			.and()
 		.formLogin()
-			.loginPage("/myCustomLogin").loginProcessingUrl("/login-process")
+			.loginPage("/login").loginProcessingUrl("/login-process")
+			.defaultSuccessUrl("/hello", true)
 			.permitAll()
 			.and()
 		.logout()
+			.logoutUrl("/logout")
+			.addLogoutHandler(cookies)
 	        .permitAll()
 	        .and()
 		.httpBasic();

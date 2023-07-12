@@ -11,7 +11,10 @@
 <body>
 	<h1>My custom login page</h1>
 	<c:if test="${param.error != null}">		
-		<i style="color: red">Invalid user or password</i>
+		<i style="color: red">Invalid username or password</i>
+	</c:if>
+	<c:if test="${param.logout != null}">		
+		<i style="color: green">Logout success</i>
 	</c:if>
 	<form:form class="form-signin" method="post" action="login-process">
         <h2 class="form-signin-heading">Please sign in</h2>

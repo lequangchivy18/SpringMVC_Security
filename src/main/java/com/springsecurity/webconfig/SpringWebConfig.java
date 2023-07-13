@@ -3,13 +3,15 @@ package com.springsecurity.webconfig;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 @EnableWebMvc
 @Configuration
-@ComponentScan({"com.springsecurity"})
+@ComponentScan({ "com.springsecurity" })
+@EnableJpaRepositories(basePackages = "com.springsecurity.repository")
 public class SpringWebConfig implements WebMvcConfigurer {
 	@Bean
 	public InternalResourceViewResolver viewResolver() {
@@ -18,7 +20,7 @@ public class SpringWebConfig implements WebMvcConfigurer {
 		viewResolver.setSuffix(".jsp");
 		return viewResolver;
 	}
-	
+
 //	@Bean
 //	PasswordEncoder getPasswordEncoder() {
 //		return new BCryptPasswordEncoder();

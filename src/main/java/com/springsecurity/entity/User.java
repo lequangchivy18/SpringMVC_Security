@@ -15,18 +15,17 @@ public class User {
 	@Column(nullable = false)
 	private String password;
 
-	@Column(nullable = false)
-	private boolean enabled;
+//	@Column(nullable = false)
+//	private boolean enabled;
 
 	public User() {
 		super();
 	}
 
-	public User(String username, String password, boolean enabled) {
+	public User(String username, String password) {
 		super();
 		this.username = username;
 		this.password = password;
-		this.enabled = enabled;
 	}
 
 	public String getUsername() {
@@ -45,12 +44,9 @@ public class User {
 		this.password = password;
 	}
 
-	public boolean isEnabled() {
-		return enabled;
-	}
-
-	public void setEnabled(boolean enabled) {
-		this.enabled = enabled;
+	@Override
+	public String toString() {
+		return "User [username=" + username + ", password=" + password + "]";
 	}
 
 }

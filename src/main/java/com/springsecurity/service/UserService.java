@@ -1,10 +1,6 @@
 package com.springsecurity.service;
 
-import java.util.List;
+import org.springframework.security.core.userdetails.UserDetailsService;
 
-import com.springsecurity.entity.User;
-
-public interface UserService {
-
-	public List<User> findAll();
+public interface UserService extends UserDetailsService {
 }

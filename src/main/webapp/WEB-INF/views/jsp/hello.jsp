@@ -11,10 +11,10 @@
 <body>
   <h1>Vỹ Hello World!</h1>
   <h1>Danh sách</h1>
-  <ul>
+  <%-- <ul>
 	  <c:forEach  items="${users}" var ='user' >
 	  	<li>${user.username}</li>
 	  </c:forEach>
-  </ul>
+  </ul> --%>
 </body>
 </html>

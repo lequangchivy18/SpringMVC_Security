@@ -10,7 +10,7 @@ import org.springframework.orm.jpa.LocalEntityManagerFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
-@EnableJpaRepositories(basePackages = {"com.springsecurity.entity"})
+@EnableJpaRepositories(basePackages = "com.springsecurity.repository")
 @EnableTransactionManagement
 public class JPAConfig {
 	@Bean

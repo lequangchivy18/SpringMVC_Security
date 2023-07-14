@@ -5,9 +5,9 @@ import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.springsecurity.entity.User;
+import com.springsecurity.entity.Authority;
 
 @Repository
-public interface UserRepository extends JpaRepository<User, String> {
-	Optional<User> findByUsername(String username);
+public interface AuthorityRepository extends JpaRepository<Authority, Long> {
+    Optional<Authority> findByAuthorityName(String authorityName);
 }

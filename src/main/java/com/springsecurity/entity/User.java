@@ -1,8 +1,14 @@
 package com.springsecurity.entity;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -15,17 +21,19 @@ public class User {
 	@Column(nullable = false)
 	private String password;
 
-//	@Column(nullable = false)
-//	private boolean enabled;
+	@ManyToMany(fetch = FetchType.EAGER)
+	@JoinTable(name = "user_authority", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "authority_id"))
+	private List<Authority> authorities;
 
 	public User() {
 		super();
 	}
 
-	public User(String username, String password) {
+	public User(String username, String password, List<Authority> authorities) {
 		super();
 		this.username = username;
 		this.password = password;
+		this.authorities = authorities;
 	}
 
 	public String getUsername() {
@@ -44,9 +52,12 @@ public class User {
 		this.password = password;
 	}
 
-	@Override
-	public String toString() {
-		return "User [username=" + username + ", password=" + password + "]";
+	public List<Authority> getAuthorities() {
+		return authorities;
+	}
+
+	public void setAuthorities(List<Authority> authorities) {
+		this.authorities = authorities;
 	}
 
 }

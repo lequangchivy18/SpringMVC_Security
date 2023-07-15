@@ -28,4 +28,9 @@ public class HelloController {
 	public String admin() {
 		return "admin";
 	}
+	
+	@RequestMapping(value = "/access_denied", method = RequestMethod.GET)
+	public String error() {
+		return "access_denied";
+	}
 }

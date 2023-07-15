@@ -51,7 +51,11 @@ public class MySecurityConfig extends WebSecurityConfigurerAdapter {
 			.addLogoutHandler(cookies)
 	        .permitAll()
 	        .and()
+	    .exceptionHandling().accessDeniedPage("/access_denied")
+			.and()
 		.httpBasic();
+	    
+		
 	}
 	
 	@Bean

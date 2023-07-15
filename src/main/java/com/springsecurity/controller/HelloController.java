@@ -1,6 +1,12 @@
 package com.springsecurity.controller;
 
+import java.security.Principal;
+import java.util.Collection;
+
+import org.apache.catalina.authenticator.SpnegoAuthenticator.AuthenticateAction;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,8 +20,21 @@ public class HelloController {
 	@Autowired
 	private UserService userService;
 
+	//principal means username
 	@RequestMapping("/")
-	public String index() {
+	public String index(Authentication auth) {
+		
+		String username = auth.getPrincipal().toString();
+		
+		System.out.println("Username is "+username);
+		
+		
+		Collection<? extends GrantedAuthority> authorities = auth.getAuthorities();
+		
+		authorities.forEach(o->{
+			System.out.println(o.toString());
+		});
+		
 		return "index";
 	}
 

@@ -24,4 +24,11 @@ public class SecurityAuthority implements GrantedAuthority {
 	public String getAuthority() {
 		return authority.getAuthorityName().toString();
 	}
+
+	@Override
+	public String toString() {
+		return "SecurityAuthority [authority=" + authority + ", getAuthority()=" + getAuthority() + "]";
+	}
+	
+	
 }

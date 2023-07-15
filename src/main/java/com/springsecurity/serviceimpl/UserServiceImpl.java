@@ -5,6 +5,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import com.springsecurity.entity.User;
 import com.springsecurity.repository.UserRepository;
 import com.springsecurity.security.SecurityUser;
 import com.springsecurity.service.UserService;
@@ -27,5 +28,11 @@ public class UserServiceImpl implements UserService {
 
 	        throw new UsernameNotFoundException("User not found: " + username);
 	    }
+
+
+	@Override
+	public void save(User user) {
+		repository.save(user);
+	}
 
 }

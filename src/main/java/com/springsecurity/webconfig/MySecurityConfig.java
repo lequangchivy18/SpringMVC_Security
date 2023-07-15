@@ -35,6 +35,7 @@ public class MySecurityConfig extends WebSecurityConfigurerAdapter {
 		CookieClearingLogoutHandler cookies = new CookieClearingLogoutHandler("JSESSIONID");
 		http
 		.authorizeRequests()
+			.antMatchers("/signup").permitAll()
 			.antMatchers("/hello").hasAuthority("USER")
 			.antMatchers("/admin").hasAuthority("ADMIN")
 			.anyRequest().authenticated()

@@ -16,6 +16,9 @@
 	<c:if test="${param.logout != null}">		
 		<i style="color: green">Logout success</i>
 	</c:if>
+	<c:if test="${param.success != null}">		
+		<i style="color: green">Signup success</i>
+	</c:if>
 	<form:form class="form-signin" method="post" action="process-login">
         <h2 class="form-signin-heading">Please sign in</h2>
         <p>
@@ -27,6 +30,7 @@
           <input type="password" id="password" name="password" class="form-control" placeholder="Password" required>
         </p>
         <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+        <a href="signup">Signup</a>
       </form:form>
 </body>
 </html>

@@ -3,7 +3,6 @@ package com.springsecurity.webconfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -36,12 +35,13 @@ public class MySecurityConfig extends WebSecurityConfigurerAdapter {
 		CookieClearingLogoutHandler cookies = new CookieClearingLogoutHandler("JSESSIONID");
 		http
 		.authorizeRequests()
-			.antMatchers("/").permitAll()
+			.antMatchers("/hello").hasAuthority("USER")
+			.antMatchers("/admin").hasAuthority("ADMIN")
 			.anyRequest().authenticated()
 			.and()
 		.formLogin()
 			.loginPage("/login").loginProcessingUrl("/process-login")
-			.defaultSuccessUrl("/hello", true)
+			.defaultSuccessUrl("/", true)
 			.usernameParameter("username")
             .passwordParameter("password")
 			.permitAll()

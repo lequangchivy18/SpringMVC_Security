@@ -17,6 +17,7 @@ import com.springsecurity.entity.UserAuthority;
 import com.springsecurity.entity.UserAuthorityId;
 import com.springsecurity.service.UserAuthorityService;
 import com.springsecurity.service.UserService;
+import com.springsecurity.validate.UserValidator;
 
 @Controller
 public class SignUpController {
@@ -26,6 +27,9 @@ public class SignUpController {
 
 	@Autowired
 	private UserAuthorityService userAuthorityService;
+	
+	@Autowired
+	private UserValidator userValidator;
 
 	@Autowired
 	private PasswordEncoder passwordEncoder;
@@ -39,6 +43,9 @@ public class SignUpController {
 	@PostMapping("/signup")
 	public String processSignUpForm(@ModelAttribute(name = "UserDto") @Valid UserDto userDto,
 			BindingResult bindingResult) {
+		
+		userValidator.validate(userDto, bindingResult);
+		
 		if (bindingResult.hasErrors()) {
 			return "signup";
 		}

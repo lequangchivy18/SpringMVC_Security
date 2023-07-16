@@ -6,6 +6,8 @@ import com.springsecurity.entity.User;
 
 public interface UserService extends UserDetailsService {
 	
-	public void save(User user);
+	void save(User user);
+	
+	boolean existById(String id);
 	
 }

@@ -35,4 +35,11 @@ public class UserServiceImpl implements UserService {
 		repository.save(user);
 	}
 
+
+	@Override
+	public boolean existById(String id) {
+		// TODO Auto-generated method stub
+		return repository.existsById(id);
+	}
+
 }

@@ -1,8 +1,13 @@
 package com.springsecurity.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,6 +17,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.springsecurity.dto.UserDto;
+import com.springsecurity.entity.Authority;
 import com.springsecurity.entity.User;
 import com.springsecurity.entity.UserAuthority;
 import com.springsecurity.entity.UserAuthorityId;
@@ -27,7 +33,7 @@ public class SignUpController {
 
 	@Autowired
 	private UserAuthorityService userAuthorityService;
-	
+
 	@Autowired
 	private UserValidator userValidator;
 
@@ -43,23 +49,31 @@ public class SignUpController {
 	@PostMapping("/signup")
 	public String processSignUpForm(@ModelAttribute(name = "UserDto") @Valid UserDto userDto,
 			BindingResult bindingResult) {
-		
+
 		userValidator.validate(userDto, bindingResult);
-		
+
 		if (bindingResult.hasErrors()) {
 			return "signup";
 		}
 
 		String encodedPassword = passwordEncoder.encode(userDto.getPassword());
 
-		userDto.setPassword(encodedPassword);
-		User user = new User(userDto.getUsername(), userDto.getPassword(), null);
+		// Cách 1
+		List<Authority> authorities = new ArrayList<>();
 
-		UserAuthorityId userAuthorityId = new UserAuthorityId(userDto.getUsername(), (long) 2);
-		UserAuthority userAuthority = new UserAuthority(userAuthorityId);
-		
+		Authority authority1 = new Authority((long) 2, "USER");
+
+		authorities.add(authority1);
+
+		userDto.setPassword(encodedPassword);
+		User user = new User(userDto.getUsername(), userDto.getPassword(), authorities);
+
+		// Cách 2
+//		UserAuthorityId userAuthorityId = new UserAuthorityId(userDto.getUsername(), (long) 2);
+//		UserAuthority userAuthority = new UserAuthority(userAuthorityId);	
+//		userAuthorityService.save(userAuthority, userAuthorityId);
+
 		userService.save(user);
-		userAuthorityService.save(userAuthority, userAuthorityId);
 
 		return "redirect:/login?success";
 	}

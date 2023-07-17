@@ -1,9 +1,6 @@
 package com.springsecurity.controller;
 
-import java.util.Collection;
-
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.GrantedAuthority;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,15 +13,9 @@ public class HelloController {
 	@RequestMapping("/")
 	public String index(Authentication auth) {
 
-		String username = auth.getPrincipal().toString();
-
-		System.out.println("Username is " + username);
-
-		Collection<? extends GrantedAuthority> authorities = auth.getAuthorities();
-
-		authorities.forEach(o -> {
-			System.out.println(o.toString());
-		});
+//		String username = auth.getPrincipal().toString();
+//
+//		Collection<? extends GrantedAuthority> authorities = auth.getAuthorities();
 
 		return "index";
 	}

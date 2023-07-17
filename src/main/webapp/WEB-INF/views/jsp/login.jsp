@@ -16,7 +16,7 @@
 	<c:if test="${param.logout != null}">		
 		<i style="color: green">Logout success</i>
 	</c:if>
-	<c:if test="${param.success != null}">		
+	<c:if test="${param.signup != null}">		
 		<i style="color: green">Signup success</i>
 	</c:if>
 	<form:form class="form-signin" method="post" action="process-login">

@@ -6,8 +6,6 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,8 +17,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import com.springsecurity.dto.UserDto;
 import com.springsecurity.entity.Authority;
 import com.springsecurity.entity.User;
-import com.springsecurity.entity.UserAuthority;
-import com.springsecurity.entity.UserAuthorityId;
 import com.springsecurity.service.UserAuthorityService;
 import com.springsecurity.service.UserService;
 import com.springsecurity.validate.UserValidator;
@@ -75,6 +71,6 @@ public class SignUpController {
 
 		userService.save(user);
 
-		return "redirect:/login?success";
+		return "redirect:/login?signup";
 	}
 }

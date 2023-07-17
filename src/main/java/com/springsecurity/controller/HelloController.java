@@ -11,10 +11,10 @@ public class HelloController {
 
 	// principal means username
 	@RequestMapping("/")
-	public String index(Authentication auth) {
-
-//		String username = auth.getPrincipal().toString();
-//
+	public String index(Authentication auth, Model model) {
+		String username = auth.getName();
+		System.out.println("User name: "+auth.getName());
+		model.addAttribute("userId",username);
 //		Collection<? extends GrantedAuthority> authorities = auth.getAuthorities();
 
 		return "index";

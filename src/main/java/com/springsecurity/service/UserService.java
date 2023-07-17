@@ -10,4 +10,6 @@ public interface UserService extends UserDetailsService {
 	
 	boolean existById(String id);
 	
+	void deleteById(String id);
+	
 }

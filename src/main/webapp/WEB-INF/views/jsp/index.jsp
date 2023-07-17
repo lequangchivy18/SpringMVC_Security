@@ -10,8 +10,10 @@
 </head>
 <body>
 	<h1>Spring MVC Hello World!</h1>
-	<a href="hello">hello</a>
-	<a href="admin">admin</a>
+	<a href="hello">Hello User</a>
+	<a href="admin">Admin</a>
+	<br/>
+	<a href="deleteUser?userId=${userId}">Delete</a>
 	<form:form action="logout">
 		<input type="submit" value="logout">
 	</form:form>

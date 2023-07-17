@@ -42,4 +42,11 @@ public class UserServiceImpl implements UserService {
 		return repository.existsById(id);
 	}
 
+
+	@Override
+	public void deleteById(String id) {
+		repository.deleteById(id);
+		
+	}
+
 }

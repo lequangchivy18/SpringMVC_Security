@@ -71,6 +71,6 @@ public class SignUpController {
 
 		userService.save(user);
 
-		return "redirect:/login?signup";
+		return "redirect:/login";
 	}
 }

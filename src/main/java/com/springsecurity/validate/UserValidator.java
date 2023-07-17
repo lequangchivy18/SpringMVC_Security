@@ -23,6 +23,7 @@ public class UserValidator implements Validator {
 	public void validate(Object target, Errors errors) {
 		UserDto userDto = (UserDto) target;
 
+		
 		if (userService.existById(userDto.getUsername())) {
 			errors.rejectValue("username", null, "Username đã tồn tại");
 		}

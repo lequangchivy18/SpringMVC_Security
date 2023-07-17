@@ -14,6 +14,8 @@
 	<a href="admin">Admin</a>
 	<br/>
 	<a href="deleteUser?userId=${userId}">Delete</a>
+	<br/>
+	<a href="changePassword">Change Password</a>
 	<form:form action="logout">
 		<input type="submit" value="logout">
 	</form:form>

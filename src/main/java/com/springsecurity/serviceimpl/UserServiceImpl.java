@@ -1,5 +1,7 @@
 package com.springsecurity.serviceimpl;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -11,6 +13,7 @@ import com.springsecurity.security.SecurityUser;
 import com.springsecurity.service.UserService;
 
 @Service
+@Transactional
 public class UserServiceImpl implements UserService {
 
 	@Autowired
@@ -46,6 +49,13 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public void deleteById(String id) {
 		repository.deleteById(id);
+		
+	}
+
+
+	@Override
+	public void changePasswors(String username, String newPassword) {
+		repository.changePassword(username, newPassword);
 		
 	}
 

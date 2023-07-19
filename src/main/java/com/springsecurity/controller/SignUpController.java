@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import com.springsecurity.dto.UserDto;
 import com.springsecurity.entity.Authority;
 import com.springsecurity.entity.User;
-import com.springsecurity.service.UserAuthorityService;
 import com.springsecurity.service.UserService;
 import com.springsecurity.validate.UserValidator;
 
@@ -26,9 +25,6 @@ public class SignUpController {
 
 	@Autowired
 	private UserService userService;
-
-	@Autowired
-	private UserAuthorityService userAuthorityService;
 
 	@Autowired
 	private UserValidator userValidator;

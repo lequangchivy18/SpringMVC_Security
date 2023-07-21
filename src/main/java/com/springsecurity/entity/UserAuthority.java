@@ -15,11 +15,6 @@ public class UserAuthority {
 		super();
 	}
 
-	public UserAuthority(UserAuthorityId authorityId) {
-		super();
-		this.authorityId = authorityId;
-	}
-
 	public UserAuthorityId getAuthorityId() {
 		return authorityId;
 	}

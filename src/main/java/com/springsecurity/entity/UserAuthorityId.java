@@ -1,5 +1,8 @@
 package com.springsecurity.entity;
 
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -16,12 +19,6 @@ public class UserAuthorityId implements Serializable {
 
 	public UserAuthorityId() {
 		super();
-	}
-
-	public UserAuthorityId(String username_id, Long authority_id) {
-		super();
-		this.user_id = username_id;
-		this.authority_id = authority_id;
 	}
 
 	public String getUsername_id() {
@@ -56,5 +53,16 @@ public class UserAuthorityId implements Serializable {
 		UserAuthorityId other = (UserAuthorityId) obj;
 		return Objects.equals(authority_id, other.authority_id) && Objects.equals(user_id, other.user_id);
 	}
+	
+
+    public void writeObject(ObjectOutputStream out) throws IOException {
+        out.writeChars(user_id);
+        out.writeLong(authority_id);
+    }
+
+    public void readObject(ObjectInputStream in) throws IOException, ClassNotFoundException {
+    	user_id = in.readUTF();
+    	authority_id = in.readLong();
+    }
 
 }

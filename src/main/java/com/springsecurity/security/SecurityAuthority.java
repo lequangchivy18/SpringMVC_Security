@@ -4,16 +4,14 @@ import org.springframework.security.core.GrantedAuthority;
 
 import com.springsecurity.entity.Authority;
 
-import lombok.AllArgsConstructor;
 
-@AllArgsConstructor
 public class SecurityAuthority implements GrantedAuthority {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private final Authority authority;
+	private Authority authority;
 
 	public SecurityAuthority(Authority authority) {
 		super();
